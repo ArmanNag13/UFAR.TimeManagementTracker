@@ -1,0 +1,78 @@
+﻿@page "/history"
+@inject HttpClient Http
+@using UFAR.TimeManagementTracker.Backend.Entities
+@rendermode InteractiveServer
+
+<div class="history-container">
+    <h3 class="text-center page-title">History</h3>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-danger shadow-sm" @onclick="ClearHistory">Clear All History</button>
+        </div>
+        <ul class="list-group">
+            @foreach (var response in aiResponses)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3 mb-2 shadow-sm border" @onclick="() => ToggleExpand(response)">
+                    <div class="text-primary font-weight-bold">@response.UserMessage</div>
+                    <div class="text-muted @(expandedResponses.Contains(response) ? "expanded" : "collapsed")">@response.Response</div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<AIResponse> aiResponses = new();
+    private HashSet<AIResponse> expandedResponses = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        aiResponses = await Http.GetFromJsonAsync<List<AIResponse>>("https://ufartimemanagement.azurewebsites.net/api/AIresponse");
+    }
+
+    private void ToggleExpand(AIResponse response)
+    {
+        if (expandedResponses.Contains(response))
+        {
+            expandedResponses.Remove(response);
+        }
+        else
+        {
+            expandedResponses.Add(response);
+        }
+    }
+
+    private async Task ClearHistory()
+    {
+        var response = await Http.DeleteAsync("https://ufartimemanagement.azurewebsites.net/api/AIResponse/delete-all");
+        if (response.IsSuccessStatusCode)
+        {
+            aiResponses.Clear(); // Clear the list in the UI
+        }
+        else
+        {
+            // Handle the error (optional)
+            Console.WriteLine("Error clearing history.");
+        }
+    }
+}
+
+<style>
+    /* Fade-in animation for history container */
+    .history-container {
+        background-image: url('/images/background.jpg'); /* Path to your image */
+        background-size: cover;
+        background-position: center;
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white; /* Adjust text color for contrast */
+        opacity: 0; /* Start with zero opacity */
+        animation: fadeIn 2s forwards; /* Apply fade-in animation */
+    }
+
+
+</style>

@@ -1,0 +1,103 @@
+﻿@* NavMenu.razor *@
+<div class="navbar">
+    <!-- Logo on the left side -->
+    <div class="logo">
+        <img src="images/ufar-logo.png" alt="Logo" class="logo-img" />
+    </div>
+    <ul class="nav">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <img src="images/home.png" alt="Home Icon" class="nav-icon home-icon" />
+                <span>Home</span>
+            </NavLink>
+        </li>
+   
+        <li class="nav-item">
+            <NavLink class="nav-link" href="ai">
+                <img src="images/ai.png" alt="AI Logo" class="nav-icon" />
+                <span>AI</span>
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="Deadlines">
+                <img src="images/deadline.png" alt="Deadline Icon" class="nav-icon" />
+                <span>Deadlines</span>
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="History">
+                <img src="images/chat.png" alt="History Icon" class="nav-icon" />
+                <span>History</span>
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="Description">
+                <img src="images/description.png" alt="Description Icon" class="nav-icon" />
+                <span>Description</span>
+            </NavLink>
+        </li>
+
+    </ul>
+</div>
+
+<style>
+    .navbar {
+        background-color: #333; /* |Black color*/
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    /* Logo styling */
+    .logo {
+        padding-right: 20px;
+    }
+
+    .logo-img {
+        height: 80px; /* Increased size for the logo */
+    }
+
+    .nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .nav-item {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .nav-link:hover {
+            background-color: #444;
+            color: #fff;
+        }
+
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .nav-link span {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    /* Specific styling for the "Home" icon to align it with the others */
+    .home-icon {
+        margin-top: 2px; /* Adjust this value as needed for alignment */
+    }
+</style>

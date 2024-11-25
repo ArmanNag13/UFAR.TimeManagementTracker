@@ -1,0 +1,114 @@
+﻿@page "/description"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Description> Localizer 
+@inject NavigationManager Navigation
+
+@rendermode InteractiveServer
+
+
+<div class="header-info">
+    <div class="date-info">
+        <h3>@Localizer["Today's Date"]</h3>
+        <p>@DateTime.Now.ToString("D")</p>
+    </div>
+    <div class="weather-info">
+        <h3>@Localizer["Current Weather"]</h3>
+        <p>@weather</p>
+    </div>
+</div>
+
+<div class="logo-container">
+    <img src="images/new-logo.png" alt="Time Management Tracker Logo" class="logo" />
+</div>
+
+<h1 class="text-center">@Localizer["Time Management Tracker"]</h1>
+
+<p class="intro-text">@Localizer["Welcome to our website. This project is a time management and scheduling web application developed using Blazor, .NET 8, and Azure AI integration."]</p>
+
+<div class="project-overview">
+    <h2>@Localizer["Project Overview"]</h2>
+    <img src="images/project-overview.jpg" alt="Project Overview" class="img-fluid mb-3" />
+    <p>
+        @Localizer["This application enables users to input and manage deadlines and exam dates, which are stored in an SQL database. It utilizes a backend API for CRUD operations, allowing users to add, delete, and retrieve deadlines and exam data. Through Azure AI integration, the system provides personalized daily schedules and can answer user queries about deadlines and tasks."]
+    </p>
+
+    <h3>@Localizer["Key Features"]</h3>
+    <img src="images/key-features.jpg" alt="Key Features" class="img-fluid mb-3" />
+    <ul>
+        <li>@Localizer["Input, manage, and track deadlines and exam dates."]</li>
+        <li>@Localizer["Perform CRUD operations through a robust backend API."]</li>
+        <li>@Localizer["Receive personalized daily schedules using Azure AI."]</li>
+        <li>@Localizer["Engage with an intelligent system that answers queries about deadlines and tasks."]</li>
+        <li>@Localizer["User-friendly interface built with Blazor components."]</li>
+    </ul>
+
+    <h3>@Localizer["Technology Stack"]</h3>
+    <img src="images/technology-stack.jpg" alt="Technology Stack" class="img-fluid mb-3" />
+    <ul>
+        <li>@Localizer["Frontend: Blazor"]</li>
+        <li>@Localizer["Backend: .NET 8 with Entity Framework"]</li>
+        <li>@Localizer["Database: SQL Server"]</li>
+        <li>@Localizer["AI Integration: Azure AI"]</li>
+    </ul>
+
+    <h3>@Localizer["How It Works"]</h3>
+    <img src="images/how-it-works.jpg" alt="How It Works" class="img-fluid mb-3" />
+    <p>
+        @Localizer["The application utilizes an API for CRUD operations that allow users to add, delete, and retrieve deadline and exam data. Azure AI integration personalizes the scheduling experience, creating tailored daily plans based on user input."]
+    </p>
+
+    <h3>@Localizer["Get Started"]</h3>
+    <img src="images/get-started.jpg" alt="Get Started" class="img-fluid mb-3" />
+    <p>
+        @Localizer["Navigate to the appropriate sections for managing your deadlines and tasks. Leverage the AI features for personalized scheduling."]
+    </p>
+</div>
+
+<h3>@Localizer["Supported Languages"]</h3>
+<div class="languages">
+    <div class="language">
+        <img src="images/flags/us.png" alt="English" class="flag" />
+        <span>@Localizer["English"]</span>
+    </div>
+    <div class="language">
+        <img src="images/flags/fr.png" alt="French" class="flag" />
+        <span>@Localizer["French"]</span>
+    </div>
+    <div class="language">
+        <img src="images/flags/es.png" alt="Spanish" class="flag" />
+        <span>@Localizer["Spanish"]</span>
+    </div>
+    <div class="language">
+        <img src="images/flags/de.png" alt="German" class="flag" />
+        <span>@Localizer["German"]</span>
+    </div>
+</div>
+
+@code {
+    private string weather = "Sunny, 25°C";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        weather = await GetWeatherAsync();
+    }
+
+    private Task<string> GetWeatherAsync()
+    {
+
+        return Task.FromResult("Sunny, 25°C");
+    }
+
+    private async Task SetCulture(string culture)
+    {
+        var uri = new Uri(Navigation.Uri)
+            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        var query = new Dictionary<string, string>
+            {
+                ["culture"] = culture,
+                ["redirectUri"] = uri
+            };
+
+        Navigation.NavigateTo($"Culture/SetCulture?{string.Join("&", query.Select(kvp => $"{kvp.Key}={kvp.Value}"))}", forceLoad: true);
+    }
+}

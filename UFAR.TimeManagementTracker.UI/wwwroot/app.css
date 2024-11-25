@@ -1,0 +1,451 @@
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
+    top: 0; 
+    background-color: black; 
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    z-index: 100; 
+    margin-bottom: 20px;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4); /* White background with 50% transparency */
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
+
+.date-info, .weather-info {
+    margin: 0;
+    color: black; /* Ensures text is readable */
+}
+
+
+.subtitle {
+    color: white; /* Sets the text color to white */
+    font-size: 1.2rem; /* Adjust the size if needed */
+    text-align: center; /* Centers the text */
+    margin-top: 10px; /* Adds space above the text */
+}
+
+.ai-page {
+    background-image: url('/images/background.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire viewport */
+    background-repeat: no-repeat; /* Prevent image tiling */
+    background-position: center; /* Center the image */
+    min-height: 100vh; /* Ensure the page covers the full viewport */
+    color: white; /* Ensure text is visible on dark backgrounds */
+    padding: 20px; /* Add padding to avoid edge clipping */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.home-page {
+    background-image: url('/images/background.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire area */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-position: center; /* Center the image */
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color for visibility */
+    filter: brightness(0.6); /* Adjust the value for desired darkness */
+}
+
+}
+.main-title {
+    font-size: 4rem; /* Adjust the size as needed */
+    font-weight: bold; /* Make it bold */
+    text-align: center; /* Center align the text */
+    color: #2c3e50; /* Choose a color that fits your design */
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+
+
+.date-info, .weather-info {
+    flex: 1;
+    text-align: center;
+}
+
+.date-info h3, .weather-info h3 {
+    margin-bottom: 5px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.project-overview {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: rgba(249, 249, 249, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #555;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #666;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #666;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.languages {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.language:hover {
+    transform: scale(1.05);
+}
+
+.flag {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+h3.ai-interaction-heading {
+    color: #007bff; /* New color for heading */
+    font-family: 'Arial', sans-serif; /* New font for heading */
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card {
+    border-radius: 1.5rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff; /* Modern blue color */
+    border-color: #007bff;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+.btn-success {
+    background-color: #28a745; /* Green color */
+    border-color: #28a745;
+    transition: all 0.3s ease;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+        transform: translateY(-2px);
+    }
+
+.btn-danger {
+    background-color: #dc3545; /* Red color */
+    border-color: #dc3545;
+    transition: all 0.3s ease;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+        transform: translateY(-2px);
+    }
+
+.btn-secondary {
+    background-color: #6c757d; /* Gray color */
+    border-color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+        transform: translateY(-2px);
+    }
+
+.form-control {
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .form-control::placeholder {
+        color: #6c757d; /* Placeholder color */
+    }
+
+.response-container {
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.response-text {
+    font-size: 1.1rem;
+    color: #495057; /* Slightly muted text color */
+    background-color: #e9ecef; /* Light background for response */
+    border-radius: 1rem;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+    .response-text:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+.input-group {
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.rating-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .rating-buttons button {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+        transition: transform 0.2s;
+    }
+
+        .rating-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+
+
+.home-page, .ai-page, {
+    background-image: url('/images/background.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the full screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    min-height: 100vh; /* Makes sure the image covers the entire height of the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color for visibility on the dark background */
+}
+
+/* wwwroot/css/styles.css */
+
+.history-container {
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.page-title {
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/*for adding*/
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.add-deadline-form {
+    animation: slideInFromTop 0.5s ease-out forwards;
+
+}
+/*for deleting*/
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delete-deadline-form {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+}
+
+/*for calendar*/
+
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calendar-view {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+}
+
+/*history*/
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.page-title {
+    font-family: 'Cursive', sans-serif;
+    font-size: 3rem;
+    color: darkgray;
+}
+
+.container {
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for content */
+    border-radius: 0.5rem;
+    padding: 20px;
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.text-primary {
+    font-size: 1.2rem;
+}
+
+.text-muted.collapsed {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.text-muted.expanded {
+    font-size: 1rem;
+    white-space: normal;
+}
+
+
+.ai-form-container {
+    background-image: url('/images/form-background.jpg'); /* Path to your form background image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+y
