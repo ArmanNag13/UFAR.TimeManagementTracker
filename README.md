@@ -46,7 +46,7 @@ The **UFAR Time Management Tracker** is a comprehensive application designed to 
 ---
 
 ## **Live Deployment**  
-The application is live and hosted on Azure. You can access the API documentation [here](https://ufartime.azurewebsites.net/swagger).  
+The application is live and hosted on Azure. You can access the API documentation [here](https://studufar.azurewebsites.net/).  
 
 ---
 
