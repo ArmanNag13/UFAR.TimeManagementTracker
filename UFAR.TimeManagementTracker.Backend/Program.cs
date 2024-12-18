@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using UFAR.TimeManagementTracker.Backend.Data;
 using UFAR.TimeManagementTracker.Backend.Services;
 using UFAR.TimeManagmentTracker.Backend.Services;
+using UFAR.VirtuLearn.BFF.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +15,10 @@ builder.Services.AddDbContext<TimeManagementContext>(options =>
 
 // Register your TimeManagementService in the DI container
 builder.Services.AddScoped<ITimeManagementService, TimeManagementService>();
-
+builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 // Register AIService with IAIService interface in the DI container
 builder.Services.AddScoped<IAIService, AIService>();
-
+  
 
 
 

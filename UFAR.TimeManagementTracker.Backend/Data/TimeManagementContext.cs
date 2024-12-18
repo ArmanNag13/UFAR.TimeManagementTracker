@@ -14,6 +14,8 @@ namespace UFAR.TimeManagementTracker.Backend.Data
         public DbSet<Deadline> Deadlines { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Exam> Exams { get; set; }
+        public DbSet<FileRecords> FileRecords { get; set; }
+        public DbSet<UserSign> userSigns { get; set; }
         public DbSet<AIResponse> AIResponses { get; set; }
 
 

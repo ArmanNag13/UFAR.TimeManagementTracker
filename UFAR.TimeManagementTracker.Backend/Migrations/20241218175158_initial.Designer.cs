@@ -12,7 +12,7 @@ using UFAR.TimeManagementTracker.Backend.Data;
 namespace UFAR.TimeManagementTracker.Backend.Migrations
 {
     [DbContext(typeof(TimeManagementContext))]
-    [Migration("20241115121556_initial")]
+    [Migration("20241218175158_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -24,6 +24,30 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("FileRecords", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileRecords");
+                });
 
             modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Entities.AIResponse", b =>
                 {
@@ -87,15 +111,7 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Exams");
                 });
@@ -118,13 +134,51 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Entities.Exam", b =>
+            modelBuilder.Entity("UserSign", b =>
                 {
-                    b.HasOne("UFAR.TimeManagementTracker.Backend.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("User");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PIN")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("userSigns");
                 });
 #pragma warning restore 612, 618
         }

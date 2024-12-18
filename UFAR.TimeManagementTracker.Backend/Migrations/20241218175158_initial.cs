@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UFAR.TimeManagementTracker.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,6 +42,35 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Exams",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ExamDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exams", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileRecords",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UploadDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileRecords", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -55,30 +84,25 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exams",
+                name: "userSigns",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExamDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PIN = table.Column<int>(type: "int", nullable: false),
+                    VerificationCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exams", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Exams_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "Id");
+                    table.PrimaryKey("PK_userSigns", x => x.Id);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exams_UserId1",
-                table: "Exams",
-                column: "UserId1");
         }
 
         /// <inheritdoc />
@@ -94,7 +118,13 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                 name: "Exams");
 
             migrationBuilder.DropTable(
+                name: "FileRecords");
+
+            migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "userSigns");
         }
     }
 }

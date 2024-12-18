@@ -22,6 +22,30 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("FileRecords", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileRecords");
+                });
+
             modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Entities.AIResponse", b =>
                 {
                     b.Property<int>("Id")
@@ -84,15 +108,7 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Exams");
                 });
@@ -115,15 +131,37 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Models.LoginRequest", b =>
+            modelBuilder.Entity("UserSign", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PIN")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -131,42 +169,13 @@ namespace UFAR.TimeManagementTracker.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
-
-                    b.ToTable("loginRequests");
-                });
-
-            modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Models.LoginResponse", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("ErrorMessage")
+                    b.Property<string>("VerificationCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsSuccess")
-                        .HasColumnType("bit");
+                    b.HasKey("Id");
 
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("loginResponses");
-                });
-
-            modelBuilder.Entity("UFAR.TimeManagementTracker.Backend.Entities.Exam", b =>
-                {
-                    b.HasOne("UFAR.TimeManagementTracker.Backend.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("User");
+                    b.ToTable("userSigns");
                 });
 #pragma warning restore 612, 618
         }
